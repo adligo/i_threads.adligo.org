@@ -32,6 +32,17 @@ package org.adligo.i.threads;
  */
 public interface I_ThreadCtx {
 
+  /**
+   * This allows stubbing of a synchronized block, so that you can assert 
+   * that the synhcronized block occured and also 
+   * @param o
+   * @param r
+   */
+  default void synchronize(Object o, Runnable r) {
+    synchronized (o) {
+      r.run();
+    }
+  }
 
   /**
    * This toggles the Threads interrupt, it provides the ability
@@ -41,4 +52,5 @@ public interface I_ThreadCtx {
   default void toggleInterruptFlag() {
     Thread.currentThread().interrupt();
   }
+  
 }
