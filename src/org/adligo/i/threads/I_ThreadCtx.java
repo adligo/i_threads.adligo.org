@@ -1,5 +1,7 @@
 package org.adligo.i.threads;
 
+import java.util.function.Supplier;
+
 /**
  * This interface contains adaptor methods for basic threading used by JSE 
  * that are also in use by JME / CLDC / MEEP / MIDP. <br/><br/>
@@ -38,9 +40,9 @@ public interface I_ThreadCtx {
    * @param o
    * @param r
    */
-  default void synchronize(Object o, Runnable r) {
+  default <T> T synchronize(Object o, Supplier<T> r) {
     synchronized (o) {
-      r.run();
+      return r.get();
     }
   }
 
