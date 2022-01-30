@@ -1,4 +1,4 @@
-package org.adligo.i.threads;
+package org.adligo.i_threads;
 
 import java.util.function.Supplier;
 
